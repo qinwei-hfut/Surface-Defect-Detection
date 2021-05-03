@@ -22,7 +22,13 @@ def pil_1_loader(path):
         return img.convert('1')
 
 path = './PCBData/group00041/00041/'
+save_path = './PCBData/group00041/00041_g/'
+if not os.path.exists(save_path):
+    os.makedirs(save_path)
 for root, _, fnames in sorted(os.walk(path)):
     for fname in sorted(fnames):
         img = pil_1_loader(path+fname)
-        pdb.set_trace()
+        np_img = np.asarray(img)
+        pil_img = Image.fromarray(np_img,mode=1)
+        pil_img.save(save_path+fname)
+        # pdb.set_trace()
