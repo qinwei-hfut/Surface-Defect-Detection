@@ -21,8 +21,8 @@ def pil_1_loader(path):
         img = Image.open(f)
         return img.convert('1')
 
-path = './PCBData/group00041/00041'
+path = './PCBData/group00041/00041/'
 for root, _, fnames in sorted(os.walk(path)):
     for fname in sorted(fnames):
-        img = pil_1_loader(fname)
+        img = pil_1_loader(path+fname)
         pdb.set_trace()
